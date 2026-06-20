@@ -14,13 +14,16 @@ for (let i = 0; i < numberIfDrumButtonns; i++) {
         // Selezione per pressione tastiera
         soundsDrum(buttonInnerHTML);
 
+        // Selezione animazione
+        btnAnimation(buttonInnerHTML);
+
     });
 }
-
 
 // Come selezionare la tastiera come input
 document.addEventListener('keydown', function (event) {
     soundsDrum(event.key);
+    btnAnimation(event.key);
 });
 
 // Funzione per richiamare i suoni
@@ -60,4 +63,16 @@ function soundsDrum(key) {
         default:
             console.log(buttonInnerHTML)
     }
+}
+
+// Animazioni
+function btnAnimation(currentKey){
+    let activeBtn = document.querySelector("." + currentKey)
+    activeBtn.classList.add("pressed");
+    
+    // Timeout per animazione
+    setTimeout(function(){
+        activeBtn.classList.remove("pressed");
+
+    }, 100);
 }
